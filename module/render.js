@@ -1,9 +1,8 @@
 
-import { currentUser, token, renderLogin  } from "./loginCompontnt.js";
+import { currentUser, token, renderLogin, formStorage } from "./loginCompontnt.js";
 import { like, initAnswer, sendComment } from "./optionComment.js";
 import { letDisabledButton, letClearForm } from "./elementChange.js";
 import { fetchAndRenderComments } from "./api.js";
-
 
  // Обработчик Даты
  const formDataComment = (commentDate) => {
@@ -90,6 +89,7 @@ const renderComments = (commentArr) => {
         id="commentInput"></textarea>
       <div class="add-form-row">
         <button class="add-form-button add-form-button_disable" id="buttonComment" disabled>Написать</button>
+        <button class="add-form-button" id="buttonExit">Выйти</button>
       </div>
     </div>`
 
@@ -124,10 +124,16 @@ const renderComments = (commentArr) => {
       }
     });
 
+    document.getElementById('buttonExit').addEventListener('click', () => {
+      localStorage.clear();       
+      formStorage();  
+      renderApp(commentArr);           
+    })
+    
+
     like(commentArr);
     initAnswer();
   }
 
-  
   
   export { renderComments, formDataComment, renderApp }

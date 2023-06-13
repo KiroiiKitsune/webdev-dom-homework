@@ -1,9 +1,13 @@
 import { authorizationUser, registrationUser } from "./optionComment.js"
-
+ 
 export let token = null;
 export let currentUser =null;
 
 
+export const formStorage = () => {
+    token = localStorage.getItem('token');
+    currentUser = localStorage.getItem('user');
+}
 
 
 export function renderLogin (appElement,fetchAndRenderComments){
