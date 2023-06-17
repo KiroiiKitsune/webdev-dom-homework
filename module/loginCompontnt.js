@@ -1,5 +1,5 @@
 import { authorizationUser, registrationUser } from "./optionComment.js"
- 
+
 export let token = null;
 export let currentUser =null;
 
